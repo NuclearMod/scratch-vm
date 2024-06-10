@@ -1421,7 +1421,7 @@ class Runtime extends EventEmitter {
             break;
         case BlockType.ARRAY:
             blockJSON.output = 'Array';
-            blockJSON.outputShape = ScratchBlocksConstants.OUTPUT_SHAPE_ARRAY;
+            blockJSON.outputShape = ScratchBlocksConstants.OUTPUT_SHAPE_SQUARE;
             break;
         case BlockType.INLINE:
             blockInfo.branchCount = blockInfo.branchCount || 1;
