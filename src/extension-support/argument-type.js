@@ -9,6 +9,16 @@ const ArgumentType = {
     ANGLE: 'angle',
 
     /**
+     * Array value with square placeholder
+     */
+    ARRAY: 'Array',
+
+    /**
+     * Object value with {} placeholder
+     */
+    OBJECT: 'Object',
+
+    /**
      * Boolean value with hexagonal placeholder
      */
     BOOLEAN: 'Boolean',

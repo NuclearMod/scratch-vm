@@ -95,6 +95,12 @@ const ArgumentTypeMap = (() => {
     map[ArgumentType.BOOLEAN] = {
         check: 'Boolean'
     };
+    map[ArgumentType.ARRAY] = {
+        check: 'Array'
+    };
+    map[ArgumentType.OBJECT] = {
+        check: 'Object'
+    };
     map[ArgumentType.MATRIX] = {
         shadow: {
             type: 'matrix',
@@ -1409,6 +1415,19 @@ class Runtime extends EventEmitter {
             blockJSON.output = 'Boolean';
             blockJSON.outputShape = ScratchBlocksConstants.OUTPUT_SHAPE_HEXAGONAL;
             break;
+        case BlockType.OBJECT:
+            blockJSON.output = 'Object';
+            blockJSON.outputShape = ScratchBlocksConstants.OUTPUT_SHAPE_OBJECT;
+            break;
+        case BlockType.ARRAY:
+            blockJSON.output = 'Array';
+            blockJSON.outputShape = ScratchBlocksConstants.OUTPUT_SHAPE_ARRAY;
+            break;
+        case BlockType.INLINE:
+            blockInfo.branchCount = blockInfo.branchCount || 1;
+            blockJSON.output = blockInfo.allowDropAnywhere ? null : 'String'; // TODO: distinguish number & string here?
+            blockJSON.outputShape = ScratchBlocksConstants.OUTPUT_SHAPE_SQUARE;
+            break;
         case BlockType.HAT:
         case BlockType.EVENT:
             if (!Object.prototype.hasOwnProperty.call(blockInfo, 'isEdgeActivated')) {
@@ -1461,7 +1480,7 @@ class Runtime extends EventEmitter {
             }
         }
 
-        if (blockInfo.blockType === BlockType.REPORTER || blockInfo.blockType === BlockType.BOOLEAN) {
+        if (blockInfo.blockType === BlockType.REPORTER || blockInfo.blockType === BlockType.BOOLEAN || blockInfo.blockType === BlockType.OBJECT || blockInfo.blockType === BlockType.ARRAY) {
             if (!blockInfo.disableMonitor && context.inputList.length === 0) {
                 blockJSON.checkboxInFlyout = true;
             }

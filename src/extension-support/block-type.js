@@ -9,6 +9,21 @@ const BlockType = {
     BOOLEAN: 'Boolean',
 
     /**
+     * Array reporter with square shape
+     */
+    ARRAY: 'Array',
+
+    /**
+     * Object reporter with hexagonal shape
+     */
+    OBJECT: 'Object',
+
+    /**
+     * Inline reporter with c-block shape
+     */
+    INLINE: 'inline',
+
+    /**
      * A button (not an actual block) for some special action, like making a variable
      */
     BUTTON: 'button',

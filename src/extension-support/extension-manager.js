@@ -554,7 +554,8 @@ class ExtensionManager {
                                 if (
                                     typeof result === 'number' ||
                                     typeof result === 'string' ||
-                                    typeof result === 'boolean'
+                                    typeof result === 'boolean' ||
+                                    typeof result === 'object'
                                 ) {
                                     return result;
                                 }
